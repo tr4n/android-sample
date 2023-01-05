@@ -29,7 +29,7 @@ class DetailFragment :
         viewModel.getMovieInformation(args.movieId)
     }
 
-    //observeData
+    //abccgdssaas
     override fun observeData() {
         viewModel.detailMovie.observe(viewLifecycleOwner) { movie ->
             viewBD.imageBackdrop.load(movie.getFullBackdropPath())
