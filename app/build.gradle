@@ -4,7 +4,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
-
+    id 'androidx.navigation.safeargs.kotlin'
     id "io.gitlab.arturbosch.detekt" version "1.21.0"
 }
 
@@ -13,7 +13,7 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    namespace 'com.ominext.moviedb'
+    namespace 'com.tr4n.moviedb'
     compileSdk 33
 
     defaultConfig {
@@ -47,22 +47,34 @@ android {
     productFlavors {
         develop {
             dimension "env"
-            applicationId "com.ominext.moviedb.dev"
-            buildConfigField "String", "BASE_URL", "\"\""
+            applicationId "com.tr4n.moviedb.dev"
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "SMALL_IMAGE_URL", "\"https://image.tmdb.org/t/p/w300\""
+            buildConfigField "String", "LARGE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
+            buildConfigField "String", "ORIGINAL_IMAGE_URL", "\"https://image.tmdb.org/t/p/original\""
+            buildConfigField "String", "TMBD_API_KEY", "\"2cdf3a5c7cf412421485f89ace91e373\""
             resValue "string", "app_name", "MovieDB DEV"
         }
 
         staging {
             dimension "env"
-            applicationId "com.ominext.moviedb"
-            buildConfigField "String", "BASE_URL", "\"\""
+            applicationId "com.tr4n.moviedb"
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/\""
+            buildConfigField "String", "SMALL_IMAGE_URL", "\"https://image.tmdb.org/t/p/w300\""
+            buildConfigField "String", "LARGE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
+            buildConfigField "String", "ORIGINAL_IMAGE_URL", "\"https://image.tmdb.org/t/p/original\""
+            buildConfigField "String", "TMBD_API_KEY", "\"2cdf3a5c7cf412421485f89ace91e373\""
             resValue "string", "app_name", "MovieDB STG"
         }
 
         product {
             dimension "env"
-            applicationId "com.ominext.moviedb"
-            buildConfigField "String", "BASE_URL", "\"\""
+            applicationId "com.tr4n.moviedb"
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/\""
+            buildConfigField "String", "SMALL_IMAGE_URL", "\"https://image.tmdb.org/t/p/w300\""
+            buildConfigField "String", "LARGE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
+            buildConfigField "String", "ORIGINAL_IMAGE_URL", "\"https://image.tmdb.org/t/p/original\""
+            buildConfigField "String", "TMBD_API_KEY", "\"2cdf3a5c7cf412421485f89ace91e373\""
             resValue "string", "app_name", "MovieDB"
         }
     }
@@ -119,14 +131,23 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
 
     //Room database
-    implementation "androidx.room:room-runtime:2.4.0"
-    kapt "androidx.room:room-compiler:2.4.0"
-    implementation("androidx.room:room-ktx:2.4.0")
+    implementation "androidx.room:room-runtime:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation("androidx.room:room-ktx:2.4.3")
+
+    // Navigation
+    def nav_version = "2.5.3"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    def paging_version = "3.1.1"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
 }
 
 detekt {
     toolVersion = "1.21.0"
-    config = files("detekt-config.yml")
+    config = files("../detekt-config.yml")
     basePath = projectDir
     buildUponDefaultConfig = true
     allRules = true
