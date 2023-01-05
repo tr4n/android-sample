@@ -36,6 +36,9 @@ class DetailFragment :
             viewBD.imageMoviePoster.load(movie.getFullPosterPath())
             viewBD.textMovieName.text = movie.title
             viewBD.textOverview.text = movie.overview
+            viewBD.textDateRelease.text = movie.releaseDate
+            viewBD.textRuntime.text = getString(R.string.minutes, movie.runtime.toString())
+            viewBD.textVoteAverage.text = movie.voteAverage.toString()
         }
         viewModel.favorite.observe(viewLifecycleOwner) { isFavorite ->
             val res =
