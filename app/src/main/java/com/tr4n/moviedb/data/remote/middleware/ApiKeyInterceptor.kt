@@ -4,12 +4,14 @@ import com.tr4n.moviedb.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class ApiKeyInterceptor : Interceptor {
+class ApiKeyInterceptor(
+    private val apiKey: String = BuildConfig.TMBD_API_KEY
+) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val origin = chain.request()
         val url = origin.url.newBuilder()
-            .addQueryParameter(QUERY_API_KEY, BuildConfig.TMBD_API_KEY)
+            .addQueryParameter(QUERY_API_KEY, apiKey)
             .addQueryParameter(QUERY_LANGUAGE, LANGUAGE_VIETNAMESE)
             .build()
         val newRequest = origin.newBuilder().url(url).build()
