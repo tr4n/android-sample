@@ -3,4 +3,7 @@
     <string name="default_foreground_notification_channel">default_foreground_notification_channel</string>
     <string name="notification_channel_description">Notification</string>
     <string name="notification_channel_name">Notification</string>
+    <string name="favorite">Favorite</string>
+    <string name="explore">Explore</string>
+    <string name="home">Home</string>
 </resources>
