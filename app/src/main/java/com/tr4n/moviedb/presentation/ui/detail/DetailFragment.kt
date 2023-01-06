@@ -16,6 +16,12 @@ class DetailFragment :
 
     private val args by navArgs<DetailFragmentArgs>()
 
+    private var tabTitle = arrayOf(
+        getString(R.string.overview),
+        getString(R.string.genres),
+        getString(R.string.review)
+    )
+
     override fun setupViews() {
         viewBD.buttonFavorite.click {
             viewModel.markFavoriteOrNot()
@@ -23,11 +29,15 @@ class DetailFragment :
         viewBD.buttonBack.click {
             findNavController().popBackStack()
         }
+
+      //  setUpViewPager()
+      //  setUpTabLayout()
     }
 
     override fun initData() {
         viewModel.getMovieInformation(args.movieId)
     }
+
 
     //observeData
     override fun observeData() {
@@ -35,10 +45,11 @@ class DetailFragment :
             viewBD.imageBackdrop.load(movie.getFullBackdropPath())
             viewBD.imageMoviePoster.load(movie.getFullPosterPath())
             viewBD.textMovieName.text = movie.title
-            viewBD.textOverview.text = movie.overview
+            //    viewBD.textOverview.text = movie.overview
             viewBD.textDateRelease.text = movie.releaseDate
             viewBD.textRuntime.text = getString(R.string.minutes, movie.runtime.toString())
-            viewBD.textVoteAverage.text = movie.voteAverage.toString()
+            viewBD.textHasAdultContent.text =
+                if (movie.adult == true) getString(R.string.yes) else getString(R.string.no)
         }
         viewModel.favorite.observe(viewLifecycleOwner) { isFavorite ->
             val res =
@@ -46,4 +57,16 @@ class DetailFragment :
             viewBD.buttonFavorite.setImageResource(res)
         }
     }
+
+//    private fun setUpTabLayout() {
+//        TabLayoutMediator(viewBD.tabLayoutDetail, viewBD.viewPagerDetail) { tab, position ->
+//            tab.text = tabTitle[position] + 1
+//        }.attach()
+//    }
+//
+//    private fun setUpViewPager() {
+//        val adapter = DetailAdapter(this, 3)
+//        viewBD.viewPagerDetail.adapter = adapter
+//    }
+
 }
