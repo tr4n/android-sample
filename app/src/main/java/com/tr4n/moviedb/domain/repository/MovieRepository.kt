@@ -17,4 +17,6 @@ interface MovieRepository {
     suspend fun getFavoriteMovie(movieId: String): Movie?
 
     suspend fun getFavoriteMovies(): List<Movie>
+
+    //suspend fun getMovieCast(): List<Cast>
 }

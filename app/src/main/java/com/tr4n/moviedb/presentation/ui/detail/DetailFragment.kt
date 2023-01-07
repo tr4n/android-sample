@@ -20,8 +20,9 @@ class DetailFragment :
 
     private var tabTitle = listOf(
         R.string.overview,
-        R.string.genres,
-        R.string.review
+        R.string.review,
+        R.string.cast,
+        R.string.similar
     )
 
     override fun setupViews() {
@@ -69,8 +70,9 @@ class DetailFragment :
                 this,
                 listOf(
                     OverviewFragment.newInstance(movieDetail = movieDetail),
-                    GenresFragment.newInstance(movieDetail = movieDetail),
-                    ReviewFragment.newInstance(movieDetail = movieDetail)
+                    ReviewFragment.newInstance(movieDetail = movieDetail),
+                    CastFragment.newInstance(movieDetail = movieDetail),
+                    SimilarFragment.newInstance(movieDetail = movieDetail)
                 )
             )
         viewBD.viewPagerDetail.adapter = adapter

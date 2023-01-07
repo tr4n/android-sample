@@ -9,13 +9,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class OverviewFragment :
     BaseFragment<FragmentOverviewBinding, DetailViewModel>(FragmentOverviewBinding::inflate) {
 
-    companion object {
-        private const val BUNDLE_MOVIE = "BUNDLE_MOVIE"
-        fun newInstance(movieDetail: Movie) = OverviewFragment().apply {
-            arguments = bundleOf(BUNDLE_MOVIE to movieDetail.overview)
-        }
-    }
-
     override val viewModel: DetailViewModel by viewModel()
 
     override fun setupViews() {
@@ -24,5 +17,12 @@ class OverviewFragment :
 
     override fun initData() {
 
+    }
+
+    companion object {
+        private const val BUNDLE_MOVIE = "BUNDLE_MOVIE"
+        fun newInstance(movieDetail: Movie) = OverviewFragment().apply {
+            arguments = bundleOf(BUNDLE_MOVIE to movieDetail.overview)
+        }
     }
 }
