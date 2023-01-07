@@ -2,16 +2,16 @@ package com.tr4n.moviedb.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
 import com.tr4n.moviedb.common.DebugLog
 import com.tr4n.moviedb.common.dialog.AlertNotice
+import com.tr4n.moviedb.common.extension.ViewInflater
 import com.tr4n.moviedb.databinding.ActivityBaseBinding
 
 abstract class BaseActivity<VB : ViewBinding>(
-    val inflateBinding: (LayoutInflater, ViewGroup?, Boolean) -> VB
+    val inflateBinding: ViewInflater<VB>
 ) : AppCompatActivity() {
     protected lateinit var viewBD: VB
     protected lateinit var baseBinding: ActivityBaseBinding

@@ -3,7 +3,7 @@ package com.tr4n.moviedb.presentation.ui.favorite
 import com.bumptech.glide.Glide
 import com.tr4n.moviedb.R
 import com.tr4n.moviedb.base.BaseFragment
-import com.tr4n.moviedb.base.recyclerview.SimpleBDAdapter
+import com.tr4n.moviedb.base.recyclerview.SimpleListAdapter
 import com.tr4n.moviedb.databinding.FragmentFavoriteBinding
 import com.tr4n.moviedb.databinding.ItemMovieBinding
 import com.tr4n.moviedb.domain.model.Movie
@@ -16,16 +16,16 @@ class FavoriteFragment :
     override val viewModel: FavoriteViewModel by viewModel()
 
     private val moviesAdapter by lazy {
-        SimpleBDAdapter<ItemMovieBinding, Movie>(ItemMovieBinding::inflate) { itemBD, item, _ ->
-            Glide.with(itemBD.imageMovie)
+        SimpleListAdapter<ItemMovieBinding, Movie>(ItemMovieBinding::inflate) { item, _ ->
+            Glide.with(imageMovie)
                 .load(item.getFullPosterPath())
-                .into(itemBD.imageMovie)
+                .into(imageMovie)
         }
     }
 
     override fun setupViews() {
         viewBD.recyclerFavoriteMovies.adapter = moviesAdapter.apply {
-            onItemClick = { _, item, _ ->
+            onItemClick = { item, _ ->
                 val bundle = DetailFragmentArgs(item.id).toBundle()
                 navigate(R.id.detailFragment, bundle)
             }
