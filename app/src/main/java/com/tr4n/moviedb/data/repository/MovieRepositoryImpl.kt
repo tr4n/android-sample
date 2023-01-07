@@ -3,7 +3,9 @@ package com.tr4n.moviedb.data.repository
 import com.tr4n.moviedb.data.entity.MovieEntity
 import com.tr4n.moviedb.data.local.AppDatabase
 import com.tr4n.moviedb.data.remote.MovieApi
+import com.tr4n.moviedb.data.remote.response.CastRes
 import com.tr4n.moviedb.data.remote.response.MovieResponse
+import com.tr4n.moviedb.domain.model.Cast
 import com.tr4n.moviedb.domain.model.Movie
 import com.tr4n.moviedb.domain.repository.MovieRepository
 
@@ -46,5 +48,9 @@ class MovieRepositoryImpl(
         return kotlin.runCatching {
             database.movieDao().getAll().map(MovieEntity::toModel)
         }.getOrNull() ?: emptyList()
+    }
+
+    override suspend fun getMovieCast(movieId: String): List<Cast> {
+        return movieApi.getMovieCredits(movieId).cast?.map(CastRes::toModel) ?: emptyList()
     }
 }
