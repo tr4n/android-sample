@@ -15,9 +15,10 @@ import androidx.viewbinding.ViewBinding
 import com.tr4n.moviedb.R
 import com.tr4n.moviedb.common.DebugLog
 import com.tr4n.moviedb.common.error.ApiException
+import com.tr4n.moviedb.common.extension.ViewInflater
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
-    val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
+    val bindingInflater: ViewInflater<VB>
 ) : Fragment() {
 
     private var _binding: VB? = null
