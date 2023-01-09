@@ -4,9 +4,11 @@ import com.tr4n.moviedb.data.entity.MovieEntity
 import com.tr4n.moviedb.data.local.AppDatabase
 import com.tr4n.moviedb.data.remote.MovieApi
 import com.tr4n.moviedb.data.remote.response.CastRes
+import com.tr4n.moviedb.data.remote.response.GetSimilarMovieResponse
 import com.tr4n.moviedb.data.remote.response.MovieResponse
 import com.tr4n.moviedb.domain.model.Cast
 import com.tr4n.moviedb.domain.model.Movie
+import com.tr4n.moviedb.domain.model.MovieSimilar
 import com.tr4n.moviedb.domain.repository.MovieRepository
 
 class MovieRepositoryImpl(
@@ -52,5 +54,12 @@ class MovieRepositoryImpl(
 
     override suspend fun getMovieCast(movieId: String): List<Cast> {
         return movieApi.getMovieCredits(movieId).cast?.map(CastRes::toModel) ?: emptyList()
+    }
+
+    override suspend fun getSimilarMovie(movieId: String, page: Int): List<MovieSimilar> {
+        return movieApi.getSimilarMovie(
+            movieId,
+            page
+        ).results?.map(GetSimilarMovieResponse::toModel) ?: emptyList()
     }
 }

@@ -2,7 +2,7 @@ package com.tr4n.moviedb.domain.model
 
 import android.os.Parcelable
 import com.tr4n.moviedb.BuildConfig
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Movie(

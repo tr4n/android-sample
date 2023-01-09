@@ -4,6 +4,7 @@ import com.tr4n.moviedb.base.BaseViewModel
 import com.tr4n.moviedb.common.utils.SingleLiveData
 import com.tr4n.moviedb.domain.model.Cast
 import com.tr4n.moviedb.domain.model.Movie
+import com.tr4n.moviedb.domain.model.MovieSimilar
 import com.tr4n.moviedb.domain.usecase.detail.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,10 +16,12 @@ class DetailViewModel : BaseViewModel() {
     private val saveFavoriteMovieUseCase: SaveFavoriteMovieUseCase by inject()
     private val removeFavoriteMovieUseCase: RemoveFavoriteMovieUseCase by inject()
     private val getCastMovieUseCase: GetCastMovieUseCase by inject()
+    private val getSimilarMovieUseCase: GetSimilarMovieUseCase by inject()
 
     val detailMovie = SingleLiveData<Movie>()
     val favorite = SingleLiveData<Boolean>()
     val castMovie = SingleLiveData<List<Cast>>()
+    val similarMovieList = SingleLiveData<List<MovieSimilar>>()
 
     fun getMovieInformation(movieId: String) {
         val param = GetDetailMovieUseCase.Input(movieId)
@@ -48,6 +51,18 @@ class DetailViewModel : BaseViewModel() {
                 mLoading.value = false
             }
         )
+    }
+
+    fun getSimilarMovieList(movieId: String, page: Int) {
+        val params = GetSimilarMovieUseCase.Input(movieId, page)
+        executeTask(onExecute = {
+            mLoading.value = true
+            val similarMovie = withContext(Dispatchers.IO) {
+                getSimilarMovieUseCase(params)
+            }
+            similarMovieList.value = similarMovie
+            mLoading.value = false
+        })
     }
 
     fun markFavoriteOrNot() {
