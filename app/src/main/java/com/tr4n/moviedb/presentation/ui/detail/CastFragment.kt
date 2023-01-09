@@ -1,8 +1,12 @@
 package com.tr4n.moviedb.presentation.ui.detail
 
 import androidx.core.os.bundleOf
+import com.bumptech.glide.Glide
 import com.tr4n.moviedb.base.BaseFragment
+import com.tr4n.moviedb.base.recyclerview.SimpleBDAdapter
 import com.tr4n.moviedb.databinding.FragmentCastBinding
+import com.tr4n.moviedb.databinding.ItemCastBinding
+import com.tr4n.moviedb.domain.model.Cast
 import com.tr4n.moviedb.domain.model.Movie
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -12,7 +16,17 @@ class CastFragment
 
     override val viewModel: DetailViewModel by viewModel()
 
+    private val listCastMovieAdapter by lazy {
+        SimpleBDAdapter<ItemCastBinding, Cast>(ItemCastBinding::inflate) { itemBD, item, _ ->
+            Glide.with(itemBD.imageMovie)
+                .load(item.getFullProfilePath())
+                .into(itemBD.imageMovie)
+            itemBD.tvRealName.text = item.name
+        }
+    }
+
     override fun setupViews() {
+        viewBD.rcvCast.adapter = listCastMovieAdapter
     }
 
     override fun initData() {
@@ -21,7 +35,7 @@ class CastFragment
 
     override fun observeData() {
         viewModel.castMovie.observe(viewLifecycleOwner) { cast ->
-            viewBD.tvCast.text = cast.toString()
+            listCastMovieAdapter.submitList(cast)
         }
     }
 
