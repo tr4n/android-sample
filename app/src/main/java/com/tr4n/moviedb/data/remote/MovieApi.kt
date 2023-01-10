@@ -1,7 +1,10 @@
 package com.tr4n.moviedb.data.remote
 
 import com.tr4n.moviedb.data.remote.response.*
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
+import retrofit2.http.QueryMap
 
 interface MovieApi {
 
@@ -22,5 +25,8 @@ interface MovieApi {
 
     @GET("movie/{movie_id}/similar")
     suspend fun getSimilarMovie(@Path("movie_id") movieId: String, @Query("page") page: Int): BaseListResponse<GetSimilarMovieResponse>
+
+    @GET("movie/{movie_id}/reviews")
+    suspend fun getReviewMovie(@Path("movie_id") movieId: String, @Query("page") page: Int): BaseListResponse<GetReviewMovieResponse>
 
 }

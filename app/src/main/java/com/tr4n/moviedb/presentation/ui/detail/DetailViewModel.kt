@@ -4,6 +4,7 @@ import com.tr4n.moviedb.base.BaseViewModel
 import com.tr4n.moviedb.common.utils.SingleLiveData
 import com.tr4n.moviedb.domain.model.Cast
 import com.tr4n.moviedb.domain.model.Movie
+import com.tr4n.moviedb.domain.model.MovieReview
 import com.tr4n.moviedb.domain.model.MovieSimilar
 import com.tr4n.moviedb.domain.usecase.detail.*
 import kotlinx.coroutines.Dispatchers
@@ -17,11 +18,13 @@ class DetailViewModel : BaseViewModel() {
     private val removeFavoriteMovieUseCase: RemoveFavoriteMovieUseCase by inject()
     private val getCastMovieUseCase: GetCastMovieUseCase by inject()
     private val getSimilarMovieUseCase: GetSimilarMovieUseCase by inject()
+    private val getReviewMovieUseCase: GetReviewMovieUseCase by inject()
 
     val detailMovie = SingleLiveData<Movie>()
     val favorite = SingleLiveData<Boolean>()
     val castMovie = SingleLiveData<List<Cast>>()
     val similarMovieList = SingleLiveData<List<MovieSimilar>>()
+    val reviewMovieList = SingleLiveData<List<MovieReview>>()
 
     fun getMovieInformation(movieId: String) {
         val param = GetDetailMovieUseCase.Input(movieId)
@@ -61,6 +64,18 @@ class DetailViewModel : BaseViewModel() {
                 getSimilarMovieUseCase(params)
             }
             similarMovieList.value = similarMovie
+            mLoading.value = false
+        })
+    }
+
+    fun getReviewMovieList(movieId: String, page: Int) {
+        val params = GetReviewMovieUseCase.Input(movieId, page)
+        executeTask(onExecute = {
+            mLoading.value = true
+            val reviewMovie = withContext(Dispatchers.IO) {
+                getReviewMovieUseCase(params)
+            }
+            reviewMovieList.value = reviewMovie
             mLoading.value = false
         })
     }

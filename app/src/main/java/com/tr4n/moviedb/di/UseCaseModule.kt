@@ -17,6 +17,7 @@ val useCaseModule = module {
     single { RemoveFavoriteMovieUseCase() }
     single { GetCastMovieUseCase() }
     single { GetSimilarMovieUseCase() }
+    single { GetReviewMovieUseCase() }
 
     // Favorite
     single { GetFavoriteMoviesUseCase() }
