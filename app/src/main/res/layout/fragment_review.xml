@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_16"
+    android:paddingTop="@dimen/dp_8"
+    android:paddingBottom="@dimen/dp_8"
+    tools:context=".presentation.ui.detail.ReviewFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvVoteAverage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/dp_4"
+        android:text="@string/average_rating"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableLeftCompat="@drawable/ic_baseline_star_rate_24" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvVoteCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/dp_4"
+        android:text="@string/number_of_reviews"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableLeftCompat="@drawable/ic_baseline_how_to_vote_24" />
+</androidx.appcompat.widget.LinearLayoutCompat>
