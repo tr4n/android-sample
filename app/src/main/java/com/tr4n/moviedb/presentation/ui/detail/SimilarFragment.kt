@@ -3,7 +3,7 @@ package com.tr4n.moviedb.presentation.ui.detail
 import androidx.core.os.bundleOf
 import com.bumptech.glide.Glide
 import com.tr4n.moviedb.base.BaseFragment
-import com.tr4n.moviedb.base.recyclerview.SimpleBDAdapter
+import com.tr4n.moviedb.base.recyclerview.SimpleListAdapter
 import com.tr4n.moviedb.databinding.FragmentSimilarBinding
 import com.tr4n.moviedb.databinding.ItemMovieBinding
 import com.tr4n.moviedb.domain.model.Movie
@@ -17,10 +17,10 @@ class SimilarFragment :
     override val viewModel: DetailViewModel by viewModel()
 
     private val listSimilarMovieAdapter by lazy {
-        SimpleBDAdapter<ItemMovieBinding, MovieSimilar>(ItemMovieBinding::inflate) { itemBD, item, _ ->
-            Glide.with(itemBD.imageMovie)
+        SimpleListAdapter<ItemMovieBinding, MovieSimilar>(ItemMovieBinding::inflate) { item, _ ->
+            Glide.with(imageMovie)
                 .load(item.getFullPosterPath())
-                .into(itemBD.imageMovie)
+                .into(imageMovie)
         }
     }
 

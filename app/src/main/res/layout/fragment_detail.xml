@@ -184,16 +184,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dp_16"
             android:paddingTop="@dimen/dp_16"
-            app:layout_constraintTop_toBottomOf="@+id/layoutInformation">
-        </com.google.android.material.tabs.TabLayout>
+            app:layout_constraintTop_toBottomOf="@+id/layoutInformation"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerDetail"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tabLayoutDetail" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

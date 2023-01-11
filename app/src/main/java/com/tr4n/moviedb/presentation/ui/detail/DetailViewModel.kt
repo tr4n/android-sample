@@ -28,7 +28,7 @@ class DetailViewModel : BaseViewModel() {
 
     fun getMovieInformation(movieId: String) {
         val param = GetDetailMovieUseCase.Input(movieId)
-        executeTask(onExecute = {
+        executeTask {
             mLoading.value = true
             val movie = withContext(Dispatchers.IO) {
                 getDetailMoviesUseCase(param)
@@ -39,45 +39,43 @@ class DetailViewModel : BaseViewModel() {
             } != null
 
             mLoading.value = false
-        })
+        }
     }
 
     fun getCastInformation(movieId: String) {
         val params = GetCastMovieUseCase.Input(movieId)
-        executeTask(
-            onExecute = {
-                mLoading.value = true
-                val cast = withContext(Dispatchers.IO) {
-                    getCastMovieUseCase(params)
-                }
-                castMovie.value = cast
-                mLoading.value = false
+        executeTask {
+            mLoading.value = true
+            val cast = withContext(Dispatchers.IO) {
+                getCastMovieUseCase(params)
             }
-        )
+            castMovie.value = cast
+            mLoading.value = false
+        }
     }
 
     fun getSimilarMovieList(movieId: String, page: Int) {
         val params = GetSimilarMovieUseCase.Input(movieId, page)
-        executeTask(onExecute = {
+        executeTask {
             mLoading.value = true
             val similarMovie = withContext(Dispatchers.IO) {
                 getSimilarMovieUseCase(params)
             }
             similarMovieList.value = similarMovie
             mLoading.value = false
-        })
+        }
     }
 
     fun getReviewMovieList(movieId: String, page: Int) {
         val params = GetReviewMovieUseCase.Input(movieId, page)
-        executeTask(onExecute = {
+        executeTask {
             mLoading.value = true
             val reviewMovie = withContext(Dispatchers.IO) {
                 getReviewMovieUseCase(params)
             }
             reviewMovieList.value = reviewMovie
             mLoading.value = false
-        })
+        }
     }
 
     fun markFavoriteOrNot() {

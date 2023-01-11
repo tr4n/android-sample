@@ -3,7 +3,7 @@ package com.tr4n.moviedb.presentation.ui.detail
 import androidx.core.os.bundleOf
 import com.bumptech.glide.Glide
 import com.tr4n.moviedb.base.BaseFragment
-import com.tr4n.moviedb.base.recyclerview.SimpleBDAdapter
+import com.tr4n.moviedb.base.recyclerview.SimpleListAdapter
 import com.tr4n.moviedb.databinding.FragmentCastBinding
 import com.tr4n.moviedb.databinding.ItemCastBinding
 import com.tr4n.moviedb.domain.model.Cast
@@ -17,11 +17,11 @@ class CastFragment
     override val viewModel: DetailViewModel by viewModel()
 
     private val listCastMovieAdapter by lazy {
-        SimpleBDAdapter<ItemCastBinding, Cast>(ItemCastBinding::inflate) { itemBD, item, _ ->
-            Glide.with(itemBD.imageMovie)
+        SimpleListAdapter<ItemCastBinding, Cast>(ItemCastBinding::inflate) { item, _ ->
+            Glide.with(imageMovie)
                 .load(item.getFullProfilePath())
-                .into(itemBD.imageMovie)
-            itemBD.tvRealName.text = item.name
+                .into(imageMovie)
+            tvRealName.text = item.name
         }
     }
 
