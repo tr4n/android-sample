@@ -23,10 +23,9 @@ abstract class BaseListAdapter<T : Any, VH : BaseViewHolder<T>>(
     /**
      * Submit list with DiffUtils
      */
-    @SuppressLint("NotifyDataSetChanged")
     override fun submitList(list: List<T>?) {
         if (list == currentList) {
-            notifyDataSetChanged()
+            notifyList()
             return
         }
         super.submitList(list ?: emptyList())

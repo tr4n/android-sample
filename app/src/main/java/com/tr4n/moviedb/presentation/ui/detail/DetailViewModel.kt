@@ -22,7 +22,7 @@ class DetailViewModel : BaseViewModel() {
 
     fun getMovieInformation(movieId: String) {
         val param = GetDetailMovieUseCase.Input(movieId)
-        executeTask(onExecute = {
+        executeTask {
             mLoading.value = true
             val movie = withContext(Dispatchers.IO) {
                 getDetailMoviesUseCase(param)
@@ -33,7 +33,7 @@ class DetailViewModel : BaseViewModel() {
             } != null
 
             mLoading.value = false
-        })
+        }
     }
 
     fun getCastInformation(movieId: String) {

@@ -1,8 +1,11 @@
 @file:Suppress("unused")
+
 package com.tr4n.moviedb.common.extension
 
 import android.os.SystemClock
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.AnimRes
 import androidx.annotation.ColorRes
@@ -10,6 +13,8 @@ import androidx.core.content.ContextCompat
 
 private var lastTimeClicked = 0L
 private var lastTimeClickedId = 0
+
+typealias ViewInflater<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
 /**
  * This is method show in textView
