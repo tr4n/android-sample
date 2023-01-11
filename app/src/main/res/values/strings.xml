@@ -6,4 +6,9 @@
     <string name="favorite">Favorite</string>
     <string name="explore">Explore</string>
     <string name="home">Home</string>
+
+    <string name="search_hint">Please input text</string>
+    <string name="search_type">Type search: </string>
+    <string name="search_movies">Movies</string>
+    <string name="input_3_characters">Input at least 3 characters</string>
 </resources>

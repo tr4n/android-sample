@@ -4,6 +4,7 @@ import com.tr4n.moviedb.data.remote.response.BaseListResponse
 import com.tr4n.moviedb.data.remote.response.GetCastAndCrewResponse
 import com.tr4n.moviedb.data.remote.response.GetMovieImagesResponse
 import com.tr4n.moviedb.data.remote.response.MovieResponse
+import com.tr4n.moviedb.domain.model.Movie
 import retrofit2.http.*
 
 interface MovieApi {
@@ -22,5 +23,11 @@ interface MovieApi {
 
     @GET("movie/{movie_id}/images")
     suspend fun getMovieImages(@Path("movie_id") movieId: String): GetMovieImagesResponse
+
+    @GET("search/movie")
+    suspend fun getDataSearch(
+        @Query("query") query: String,
+        @Query("page") page: Int = 1
+    ): BaseListResponse<MovieResponse>
 
 }

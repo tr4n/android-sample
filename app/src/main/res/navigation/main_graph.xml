@@ -20,7 +20,13 @@
         android:id="@+id/exploreFragment"
         android:name="com.tr4n.moviedb.presentation.ui.explore.ExploreFragment"
         android:label="ExploreFragment"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_explore">
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.tr4n.moviedb.presentation.ui.favorite.FavoriteFragment"
