@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.tr4n.moviedb.R
 import com.tr4n.moviedb.base.BaseFragment
-import com.tr4n.moviedb.base.recyclerview.SimpleBDAdapter
+import com.tr4n.moviedb.base.recyclerview.SimpleListAdapter
 import com.tr4n.moviedb.databinding.FragmentReviewBinding
 import com.tr4n.moviedb.databinding.ItemReviewBinding
 import com.tr4n.moviedb.domain.model.Movie
@@ -18,14 +18,14 @@ class ReviewFragment :
     override val viewModel: DetailViewModel by viewModels()
 
     private val listReviewAdapter by lazy {
-        SimpleBDAdapter<ItemReviewBinding, MovieReview>(ItemReviewBinding::inflate) { itemBD, item, _ ->
-            Glide.with(itemBD.imgAvatarReview)
+        SimpleListAdapter<ItemReviewBinding, MovieReview>(ItemReviewBinding::inflate) { item, _ ->
+            Glide.with(imgAvatarReview)
                 .load(item.avatarPath)
-                .into(itemBD.imgAvatarReview)
-            itemBD.tvNameReview.text = item.author
-            itemBD.tvTimeReview.text = item.createdAt
-            itemBD.tvPointReview.text = item.rating.toString()
-            itemBD.tvContentReview.text = item.content
+                .into(imgAvatarReview)
+            tvNameReview.text = item.author
+            tvTimeReview.text = item.createdAt
+            tvPointReview.text = item.rating.toString()
+            tvContentReview.text = item.content
         }
     }
 
