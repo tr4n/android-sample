@@ -13,8 +13,11 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
 import com.tr4n.moviedb.common.DebugLog
+import com.tr4n.moviedb.common.extension.ViewInflater
 
-abstract class BaseDialogFragment<VB : ViewBinding, VM : BaseViewModel> : DialogFragment() {
+abstract class BaseDialogFragment<VB : ViewBinding, VM : BaseViewModel>(
+    val bindingInflater: ViewInflater<VB>
+) : DialogFragment() {
     private var _binding: VB? = null
     protected val binding get() = _binding!!
 
@@ -52,8 +55,6 @@ abstract class BaseDialogFragment<VB : ViewBinding, VM : BaseViewModel> : Dialog
         super.onDestroyView()
         _binding = null
     }
-
-    abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
 
     protected open fun setupViews() {
         // Implement in overing function
