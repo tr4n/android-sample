@@ -6,6 +6,7 @@ import com.tr4n.moviedb.domain.usecase.detail.RemoveFavoriteMovieUseCase
 import com.tr4n.moviedb.domain.usecase.detail.SaveFavoriteMovieUseCase
 import com.tr4n.moviedb.domain.usecase.favorite.GetFavoriteMoviesUseCase
 import com.tr4n.moviedb.domain.usecase.home.GetTopRatedMoviesUseCase
+import com.tr4n.moviedb.domain.usecase.search.SearchMovieUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -21,4 +22,5 @@ val useCaseModule = module {
 
     // Favorite
     single { GetFavoriteMoviesUseCase() }
+    single { SearchMovieUseCase() }
 }

@@ -7,4 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="bg_02">#F2F2F2</color>
+
+    <color name="pri_5">#73A8FB</color>
+    <color name="pri_4">#98BFFD</color>
+    <color name="pri_3">#94BDFB</color>
+    <color name="pri_2">#9DD7FA</color>
+    <color name="pri_1">#BEEEFF</color>
+
+    <color name="black_1">#1A000000</color>
+    <color name="black_2">#4D000000</color>
+    <color name="black_3">#80000000</color>
+    <color name="black_4">#CC000000</color>
+    <color name="black_5">#000000</color>
 </resources>

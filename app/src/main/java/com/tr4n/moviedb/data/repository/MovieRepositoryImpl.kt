@@ -47,4 +47,10 @@ class MovieRepositoryImpl(
             database.movieDao().getAll().map(MovieEntity::toModel)
         }.getOrNull() ?: emptyList()
     }
+
+    override suspend fun querySearch(query: String): List<Movie> {
+        return movieApi.getDataSearch(query).results
+            ?.map(MovieResponse::toModel)
+            ?: emptyList()
+    }
 }

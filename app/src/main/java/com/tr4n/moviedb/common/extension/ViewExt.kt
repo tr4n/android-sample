@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.AnimRes
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 
 private var lastTimeClicked = 0L
 private var lastTimeClickedId = 0
@@ -75,4 +76,13 @@ fun View.setAnimationResource(@AnimRes resId: Int, duration: Long = 250) {
         }
         startAnimation(animation)
     }
+}
+
+fun View.showSnackBar(data: Any, length: Int = Snackbar.LENGTH_LONG) {
+    val message = when (data) {
+        is Int -> context.getString(data)
+        is Throwable -> data.message.toString()
+        else -> data.toString()
+    }
+    Snackbar.make(this, message, length).show()
 }

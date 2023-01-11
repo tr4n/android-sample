@@ -1,12 +1,9 @@
 package com.tr4n.moviedb.data.remote.response
 
-import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
-import com.tr4n.moviedb.BuildConfig
 import com.tr4n.moviedb.domain.mapper.MapAbleToModel
 import com.tr4n.moviedb.domain.model.Movie
 
-@Entity(tableName = "movies")
 data class MovieResponse(
     @SerializedName("id")
     val id: String,
@@ -49,12 +46,6 @@ data class MovieResponse(
     @SerializedName("vote_count")
     val voteCount: Int? = null,
 ) : MapAbleToModel<Movie> {
-
-    fun getFullBackdropPath() =
-        if (backdropPath.isNullOrBlank()) null else BuildConfig.SMALL_IMAGE_URL + backdropPath
-
-    fun getFullPosterPath() =
-        if (posterPath.isNullOrBlank()) null else BuildConfig.SMALL_IMAGE_URL + posterPath
 
     override fun toModel(): Movie {
         return Movie(
