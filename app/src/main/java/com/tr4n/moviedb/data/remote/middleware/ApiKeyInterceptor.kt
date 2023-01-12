@@ -21,6 +21,6 @@ class ApiKeyInterceptor(
     companion object {
         private const val QUERY_API_KEY = "api_key"
         private const val QUERY_LANGUAGE = "language"
-        private const val LANGUAGE_VIETNAMESE = "vi"
+        private const val LANGUAGE_VIETNAMESE = "en"
     }
 }

@@ -6,4 +6,22 @@
     <string name="favorite">Favorite</string>
     <string name="explore">Explore</string>
     <string name="home">Home</string>
+    <string name="minutes">%s Minute</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="overview">Overview</string>
+    <string name="genres">Genres</string>
+    <string name="review">Review</string>
+    <string name="cast">Cast</string>
+    <string name="similar">Similar</string>
+    <string name="average_rating">Average rating: %s</string>
+    <string name="number_of_reviews">Number of reviews: %s</string>
+    <string name="cast_name">Henry Hill</string>
+    <string name="real_name">Ray Liotta</string>
+    <string name="review_time">December 16, 2022</string>
+    <string name="review_name">mooney240</string>
+    <string name="point">8.0</string>
+    <string name="no_review">We don\'t have any reviews for <b>%s</b>. Would you like to write one ?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
