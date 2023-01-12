@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="T10H14">
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="lineHeight">@dimen/dp_14</item>
+    </style>
+
+    <style name="T12H18">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="lineHeight">@dimen/dp_18</item>
+    </style>
+
+    <style name="T14H20">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="lineHeight">@dimen/dp_20</item>
+    </style>
+
+    <style name="T20H28">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="lineHeight">@dimen/dp_28</item>
+    </style>
+
+    <style name="T24H32">
+        <item name="android:textSize">@dimen/sp_24</item>
+        <item name="lineHeight">@dimen/dp_32</item>
+    </style>
+
+    <style name="T30H38">
+        <item name="android:textSize">@dimen/sp_30</item>
+        <item name="lineHeight">@dimen/dp_38</item>
+    </style>
+
+    <style name="T46H56">
+        <item name="android:textSize">@dimen/sp_46</item>
+        <item name="lineHeight">@dimen/dp_56</item>
+    </style>
+
+    <style name="T56H64">
+        <item name="android:textSize">@dimen/sp_56</item>
+        <item name="lineHeight">@dimen/dp_64</item>
+    </style>
+</resources>
