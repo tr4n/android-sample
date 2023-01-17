@@ -26,8 +26,9 @@ data class Movie(
     val video: Boolean? = false,
     val voteAverage: Double? = null,
     val voteCount: Int? = null,
-    var isFavorite: Boolean? = false
-): Parcelable {
+    var isFavorite: Boolean? = false,
+    var genre: String? = null,
+) : Parcelable {
 
     fun getFullBackdropPath() =
         (BuildConfig.LARGE_IMAGE_URL + backdropPath).takeIf { backdropPath.isNullOrBlank().not() }
