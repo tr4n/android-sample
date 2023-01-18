@@ -2,11 +2,9 @@ package com.tr4n.moviedb.presentation.ui.detail
 
 import com.tr4n.moviedb.base.BaseViewModel
 import com.tr4n.moviedb.common.utils.SingleLiveData
+import com.tr4n.moviedb.domain.model.Cast
 import com.tr4n.moviedb.domain.model.Movie
-import com.tr4n.moviedb.domain.usecase.detail.GetDetailMovieUseCase
-import com.tr4n.moviedb.domain.usecase.detail.GetFavoriteMovieUseCase
-import com.tr4n.moviedb.domain.usecase.detail.RemoveFavoriteMovieUseCase
-import com.tr4n.moviedb.domain.usecase.detail.SaveFavoriteMovieUseCase
+import com.tr4n.moviedb.domain.usecase.detail.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.component.inject
@@ -16,9 +14,11 @@ class DetailViewModel : BaseViewModel() {
     private val getFavoriteMovieUseCase: GetFavoriteMovieUseCase by inject()
     private val saveFavoriteMovieUseCase: SaveFavoriteMovieUseCase by inject()
     private val removeFavoriteMovieUseCase: RemoveFavoriteMovieUseCase by inject()
+    private val getCastMovieUseCase: GetCastMovieUseCase by inject()
 
     val detailMovie = SingleLiveData<Movie>()
     val favorite = SingleLiveData<Boolean>()
+    val castMovie = SingleLiveData<List<Cast>>()
 
     fun getMovieInformation(movieId: String) {
         val param = GetDetailMovieUseCase.Input(movieId)
@@ -34,6 +34,20 @@ class DetailViewModel : BaseViewModel() {
 
             mLoading.value = false
         }
+    }
+
+    fun getCastInformation(movieId: String) {
+        val params = GetCastMovieUseCase.Input(movieId)
+        executeTask(
+            onExecute = {
+                mLoading.value = true
+                val cast = withContext(Dispatchers.IO) {
+                    getCastMovieUseCase(params)
+                }
+                castMovie.value = cast
+                mLoading.value = false
+            }
+        )
     }
 
     fun markFavoriteOrNot() {

@@ -12,10 +12,23 @@ class CastFragment
 
     override val viewModel: DetailViewModel by viewModel()
 
+    override fun setupViews() {
+    }
+
+    override fun initData() {
+        viewModel.getCastInformation(arguments?.getString(BUNDLE_MOVIE_ID).toString())
+    }
+
+    override fun observeData() {
+        viewModel.castMovie.observe(viewLifecycleOwner) { cast ->
+            viewBD.tvCast.text = cast.toString()
+        }
+    }
+
     companion object {
-        private const val BUNDLE_MOVIE_GENRES = "BUNDLE_MOVIE_GENRES"
+        private const val BUNDLE_MOVIE_ID = "BUNDLE_MOVIE_ID"
         fun newInstance(movieDetail: Movie) = CastFragment().apply {
-            arguments = bundleOf(BUNDLE_MOVIE_GENRES to movieDetail)
+            arguments = bundleOf(BUNDLE_MOVIE_ID to movieDetail.id)
         }
     }
 }
