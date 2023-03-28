@@ -71,13 +71,8 @@ Following Linters are used internally by super linter (enabled for this project)
 ## [`Detekt`](https://detekt.dev/) 🗡️
 Detekt helps you write cleaner Kotlin code so you can focus on what matters the most building amazing software.
 
-[![Dagger2 Version](https://img.shields.io/static/v1?label=Foodium&message=Dagger2-DI&color=brightgreen&logo=android)](https://github.com/PatilShreyas/Foodium/tree/dev-hilt-android)
-
-
 ## [`Koin`](https://insert-koin.io/) DI Version 🗡️
 If you want to use *Koin - Dependency Injection framework* in app then visit below repository.
-
-[![Koin Version](https://img.shields.io/badge/PranayPatel512-Foodium-blue.svg?style=flat-square&logo=github)](https://github.com/pranaypatel512/Foodium)
 
 **Contributed By:** [JohanForce](https://github.com/johanforce/)
 
