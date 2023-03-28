@@ -1,7 +1,10 @@
 package com.tr4n.moviedb.domain.model
 
+import android.os.Parcelable
 import com.tr4n.moviedb.BuildConfig
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Movie(
     val id: String,
     val adult: Boolean? = false,
@@ -23,8 +26,9 @@ data class Movie(
     val video: Boolean? = false,
     val voteAverage: Double? = null,
     val voteCount: Int? = null,
-    var isFavorite: Boolean? = false
-) {
+    var isFavorite: Boolean? = false,
+    var genre: String? = null,
+) : Parcelable {
 
     fun getFullBackdropPath() =
         (BuildConfig.LARGE_IMAGE_URL + backdropPath).takeIf { backdropPath.isNullOrBlank().not() }

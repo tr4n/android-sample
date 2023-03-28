@@ -50,7 +50,9 @@ data class MovieEntity(
     val voteAverage: Double? = null,
     @ColumnInfo(name = "vote_count")
     val voteCount: Int? = null,
-): MapAbleToModel<Movie> {
+    @ColumnInfo(name = "genres")
+    val genres: String? = null,
+) : MapAbleToModel<Movie> {
 
     constructor(movie: Movie) : this(
         id = movie.id,
@@ -73,6 +75,7 @@ data class MovieEntity(
         video = movie.video,
         voteAverage = movie.voteAverage,
         voteCount = movie.voteCount,
+        genres = movie.genre
     )
 
     override fun toModel() = Movie(
@@ -96,5 +99,6 @@ data class MovieEntity(
         video = video,
         voteAverage = voteAverage,
         voteCount = voteCount,
+        genre = genres
     )
 }

@@ -48,6 +48,7 @@ data class MovieResponse(
     val voteAverage: Double? = null,
     @SerializedName("vote_count")
     val voteCount: Int? = null,
+    @SerializedName("genres") var genres: List<Genres>? = null
 ) : MapAbleToModel<Movie> {
 
     fun getFullBackdropPath() =
@@ -78,6 +79,12 @@ data class MovieResponse(
             video = video,
             voteAverage = voteAverage,
             voteCount = voteCount,
+            genre = genres?.first()?.name
         )
     }
 }
+
+data class Genres(
+    @SerializedName("id") var id: Int? = null,
+    @SerializedName("name") var name: String? = null
+)
