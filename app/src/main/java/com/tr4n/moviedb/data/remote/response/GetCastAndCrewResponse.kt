@@ -5,6 +5,7 @@ import com.tr4n.moviedb.domain.mapper.MapAbleToModel
 import com.tr4n.moviedb.domain.model.Cast
 import com.tr4n.moviedb.domain.model.Crew
 
+
 data class GetCastAndCrewResponse(
     @SerializedName("id")
     val id: Int? = null,
@@ -31,7 +32,15 @@ data class CrewRes(
     val profilePath: String? = null
 ) : MapAbleToModel<Crew> {
     override fun toModel(): Crew {
-        return Crew(creditId, department, gender, id, job, name, profilePath)
+        return Crew(
+            creditId = creditId,
+            department = department,
+            gender = gender,
+            id = id,
+            job = job,
+            name = name,
+            profilePath = profilePath
+        )
     }
 }
 
@@ -55,6 +64,15 @@ data class CastRes(
 ) : MapAbleToModel<Cast> {
 
     override fun toModel(): Cast {
-        return Cast(castId, character, creditId, gender, id, name, order, profilePath)
+        return Cast(
+            castId = castId,
+            character = character,
+            creditId = creditId,
+            gender = gender,
+            id = id,
+            name = name,
+            order = order,
+            profilePath = profilePath
+        )
     }
 }
