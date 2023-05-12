@@ -1,5 +1,6 @@
 package com.tr4n.moviedb.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.viewbinding.ViewBinding
 import com.tr4n.moviedb.common.DebugLog
 import com.tr4n.moviedb.common.dialog.AlertNotice
 import com.tr4n.moviedb.common.extension.ViewInflater
+import com.tr4n.moviedb.common.extension.isConnected
 import com.tr4n.moviedb.databinding.ActivityBaseBinding
 
 abstract class BaseActivity<VB : ViewBinding>(
@@ -67,5 +69,9 @@ abstract class BaseActivity<VB : ViewBinding>(
             isErrorDialogShowing = false
         }
         isErrorDialogShowing = true
+    }
+
+    fun isConnectionNetwork(): Boolean{
+        return this.isConnected()
     }
 }

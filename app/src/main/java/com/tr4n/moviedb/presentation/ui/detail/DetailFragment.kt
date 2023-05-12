@@ -7,6 +7,7 @@ import com.tr4n.moviedb.base.BaseFragment
 import com.tr4n.moviedb.common.extension.click
 import com.tr4n.moviedb.common.extension.load
 import com.tr4n.moviedb.databinding.FragmentDetailBinding
+import com.tr4n.moviedb.presentation.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment :
@@ -26,7 +27,7 @@ class DetailFragment :
     }
 
     override fun initData() {
-        viewModel.getMovieInformation(args.movieId)
+        viewModel.getMovieInformation(args.movieId, (activity as? MainActivity)?.isConnectionNetwork() ?: false)
     }
 
     //abccgdssaas

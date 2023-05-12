@@ -20,14 +20,18 @@ class DetailViewModel : BaseViewModel() {
     val detailMovie = SingleLiveData<Movie>()
     val favorite = SingleLiveData<Boolean>()
 
-    fun getMovieInformation(movieId: String) {
+    fun getMovieInformation(movieId: String, isConnected: Boolean) {
         val param = GetDetailMovieUseCase.Input(movieId)
         executeTask {
             mLoading.value = true
             val movie = withContext(Dispatchers.IO) {
-                getDetailMoviesUseCase(param)
+                if(isConnected){
+                    getDetailMoviesUseCase(param)
+                }else{
+                    getFavoriteMovieUseCase(movieId)
+                }
             }
-            detailMovie.value = movie
+            detailMovie.value = movie ?: Movie(id = "")
             favorite.value = withContext(Dispatchers.IO) {
                 getFavoriteMovieUseCase(movieId)
             } != null

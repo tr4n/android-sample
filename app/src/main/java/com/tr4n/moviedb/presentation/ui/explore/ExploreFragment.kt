@@ -44,11 +44,12 @@ class ExploreFragment :
     }
 
     private fun handleClickSearch() {
-        val text = viewBD.etSearch.text.toString()
-        if (text.length < 3)
-            viewBD.root.showSnackBar(getString(R.string.input_3_characters))
-
         viewBD.icSearch.click {
+            val text = viewBD.etSearch.text.toString()
+            if (text.length < 3){
+                viewBD.root.showSnackBar(getString(R.string.input_3_characters))
+                return@click
+            }
             viewModel.getListMovies(text)
         }
     }

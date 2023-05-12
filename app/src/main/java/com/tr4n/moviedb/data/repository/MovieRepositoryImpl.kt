@@ -6,6 +6,8 @@ import com.tr4n.moviedb.data.remote.MovieApi
 import com.tr4n.moviedb.data.remote.response.MovieResponse
 import com.tr4n.moviedb.domain.model.Movie
 import com.tr4n.moviedb.domain.repository.MovieRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class MovieRepositoryImpl(
     private val movieApi: MovieApi,
@@ -42,10 +44,8 @@ class MovieRepositoryImpl(
         }.getOrNull()
     }
 
-    override suspend fun getFavoriteMovies(): List<Movie> {
-        return kotlin.runCatching {
-            database.movieDao().getAll().map(MovieEntity::toModel)
-        }.getOrNull() ?: emptyList()
+    override fun getFavoriteMovies(): Flow<List<Movie>> {
+        return database.movieDao().getAll().map { it.map(MovieEntity::toModel)}
     }
 
     override suspend fun querySearch(query: String): List<Movie> {

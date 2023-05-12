@@ -7,10 +7,11 @@
 
     <ImageView
         android:id="@+id/imageBackdrop"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="417dp"
+        android:layout_height="246dp"
         android:adjustViewBounds="true"
         android:contentDescription="@null"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.widget.Toast
@@ -86,4 +87,11 @@ val Context.navigationBarHeight: Int
 
 fun Context.getRandomColor(): Int {
     return Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))
+}
+
+fun Context?.isConnected(): Boolean {
+    this ?: return false
+    val cm: ConnectivityManager =
+        getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return cm.activeNetworkInfo?.isConnected == true
 }
